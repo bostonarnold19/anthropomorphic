@@ -29,11 +29,9 @@ class GlobalSettingServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(resource_path('views/modules/branch'), 'branch');
         $this->loadViewsFrom(resource_path('views/modules/department'), 'department');
-        $this->loadViewsFrom(resource_path('views/modules/section'), 'section');
-        $this->loadViewsFrom(resource_path('views/modules/employment_type'), 'employment_type');
-        $this->loadViewsFrom(resource_path('views/modules/holiday_type'), 'holiday_type');
         $this->loadViewsFrom(resource_path('views/modules/designation'), 'designation');
-        $this->loadViewsFrom(resource_path('views/modules/leave'), 'leave');
+        $this->loadViewsFrom(resource_path('views/modules/employment_type'), 'employment_type');
+        $this->loadViewsFrom(resource_path('views/modules/leave_type'), 'leave_type');
         $this->loadViewsFrom(resource_path('views/modules/schedule'), 'schedule');
     }
 

@@ -89,14 +89,6 @@
             </a>
         </li>
         @endpermission
-        @permission('manage-section')
-        <li class="nav-main-item">
-            <a class="nav-main-link {{ Request::is('section') ? 'active' : '' }}" href="{{ route('section.index') }}">
-                <i class="nav-main-link-icon far fa-dot-circle"></i>
-                <span class="nav-main-link-name">Section</span>
-            </a>
-        </li>
-        @endpermission
         @permission('manage-designation')
         <li class="nav-main-item">
             <a class="nav-main-link {{ Request::is('designation') ? 'active' : '' }}" href="{{ route('designation.index') }}">

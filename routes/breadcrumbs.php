@@ -16,12 +16,6 @@ Breadcrumbs::for ('department.index', function ($trail) {
     $trail->push('Department', route('department.index'));
 });
 
-//------------ SECTION ------------//
-Breadcrumbs::for ('section.index', function ($trail) {
-    $trail->parent('dashboard');
-    $trail->push('Section', route('section.index'));
-});
-
 //------------ Designation ------------//
 Breadcrumbs::for ('designation.index', function ($trail) {
     $trail->parent('dashboard');

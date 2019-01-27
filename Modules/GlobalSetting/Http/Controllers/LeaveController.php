@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Modules\GlobalSetting\Interfaces\GlobalSettingRepositoryInterface;
 use Yajra\DataTables\Facades\DataTables;
 
-class DepartmentController extends Controller
+class LeaveController extends Controller
 {
     protected $global_setting_repository;
 
