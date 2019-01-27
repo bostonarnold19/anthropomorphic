@@ -24,8 +24,7 @@
                 </ul>
                 <div class="block-content tab-content">
                     <div class="tab-pane active" id="tab-personal-information" role="tabpanel">
-                        <h4 class="font-w400">Personal Information</h4>
-                        <p>...</p>
+                        @include('employee::includes._form_personal_information')
                     </div>
                     <div class="tab-pane" id="tab-employment-details" role="tabpanel">
                         <h4 class="font-w400">Employment Details</h4>
@@ -50,8 +49,8 @@
                             <div class="form-group">
                                 <img class="mx-auto d-block img-thumbnai img-fluid mb-4" src="{{ asset($employee->profile_picture) }}" alt="">
                                 <div class="custom-file">
-                                  <input type="file" class="custom-file-input" id="profile_picture" name="profile_picture">
-                                  <label class="custom-file-label" for="profile_picture">Choose Image</label>
+                                    <input type="file" class="custom-file-input" id="profile_picture" name="profile_picture">
+                                    <label class="custom-file-label" for="profile_picture">Choose Image</label>
                                 </div>
                             </div>
                         </div>
@@ -63,6 +62,15 @@
 </div>
 @endsection
 @section('styles')
+<link rel="stylesheet" href="{{ asset('themes/dashmix/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
 @endsection
 @section('scripts')
+<script src="{{ asset('themes/dashmix/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+<script>
+    $('.js-datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        todayHighlight: true,
+    });
+</script>
 @endsection

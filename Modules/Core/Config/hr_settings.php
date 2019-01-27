@@ -37,4 +37,15 @@ return [
 
         ],
     ],
+
+    'marital_status' => [
+        'Single', 'Married', 'Widowed', 'Divorced', 'Separated',
+    ],
+
+    'educational_level' => [
+        "Associate's degree",
+        "Bachelor's degree",
+        "Master's degree",
+        "Doctoral degree",
+    ],
 ];

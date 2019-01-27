@@ -116,21 +116,20 @@ class EmployeeController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $data = $request->all();
-        // try {
-        //     DB::beginTransaction();
-        //     $user = $this->employee_repository->findOrFail($id);
-        //     $user->update($data);
-        //     $user->roles()->sync($data['roles']);
-        //     DB::commit();
-        //     $status = 'success';
-        //     $message = 'User has been updated.';
-        // } catch (\Exception $e) {
-        //     $status = 'error';
-        //     $message = 'Internal Server Error. Try again later.';
-        //     DB::rollBack();
-        // }
-        // return redirect()->route('user.index')->with($status, $message);
+        $data = $request->all();
+        try {
+            DB::beginTransaction();
+            $employee = $this->employee_repository->findOrFail($id);
+            $employee->update($data);
+            DB::commit();
+            $status = 'success';
+            $message = 'Employee has been updated.';
+        } catch (\Exception $e) {
+            $status = 'error';
+            $message = 'Internal Server Error. Try again later.';
+            DB::rollBack();
+        }
+        return redirect()->route('employee.edit', $employee->id)->with($status, $message);
     }
 
     public function destroy($id)
