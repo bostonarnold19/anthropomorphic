@@ -97,13 +97,5 @@
             </a>
         </li>
         @endpermission
-        @permission('manage-employment-type')
-        <li class="nav-main-item">
-            <a class="nav-main-link {{ Request::is('employment-type') ? 'active' : '' }}" href="{{ route('employment-type.index') }}">
-                <i class="nav-main-link-icon far fa-dot-circle"></i>
-                <span class="nav-main-link-name">Employment Type</span>
-            </a>
-        </li>
-        @endpermission
     </ul>
 </div>

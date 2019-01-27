@@ -14,23 +14,11 @@ return [
     ['name' => 'edit-department'],
     ['name' => 'delete-department'],
 
-    //section
-    ['name' => 'manage-section'],
-    ['name' => 'add-section'],
-    ['name' => 'edit-section'],
-    ['name' => 'delete-section'],
-
     //designation
     ['name' => 'manage-designation'],
     ['name' => 'add-designation'],
     ['name' => 'edit-designation'],
     ['name' => 'delete-designation'],
-
-    //employment-type
-    ['name' => 'manage-employment-type'],
-    ['name' => 'add-employment-type'],
-    ['name' => 'edit-employment-type'],
-    ['name' => 'delete-employment-type'],
 
     //schedule
     ['name' => 'manage-schedule'],

@@ -51,7 +51,7 @@
                                 <select class="custom-select" name="value[days]" required>
                                     <option value="" disabled="" selected="">Please select</option>
                                     @foreach(config('hr_settings.schedule_days') as $key => $value)
-                                    <option value="{{ $key }}">{{ $value }}</option>
+                                    <option value="{{ $key }}">{{ $value['name'] }}</option>
                                     @endforeach
                                 </select>
                             </div>

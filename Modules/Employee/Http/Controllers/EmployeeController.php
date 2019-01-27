@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Modules\Employee\Interfaces\EmployeeRepositoryInterface;
 use Modules\Employee\Interfaces\EmployeeSettingRepositoryInterface;
 use Modules\Employee\Services\EmployeeService;
+use Modules\User\Interfaces\RoleRepositoryInterface;
+use Modules\User\Interfaces\UserRepositoryInterface;
 use Yajra\DataTables\Facades\DataTables;
 
 class EmployeeController extends Controller
@@ -15,18 +17,24 @@ class EmployeeController extends Controller
     protected $employee_repository;
     protected $employee_setting_repository;
     protected $employee_service;
+    protected $user_repository;
+    protected $role_repository;
 
     public function __construct(
         EmployeeRepositoryInterface $employee_repository,
         EmployeeSettingRepositoryInterface $employee_setting_repository,
-        EmployeeService $employee_service
+        EmployeeService $employee_service,
+        UserRepositoryInterface $user_repository,
+        RoleRepositoryInterface $role_repository
     ) {
         $this->employee_repository = $employee_repository->model;
         $this->employee_setting_repository = $employee_setting_repository->model;
         $this->employee_service = $employee_service;
+        $this->user_repository = $user_repository->model;
+        $this->role_repository = $role_repository->model;
         $this->middleware('permission:manage-employee', ['only' => ['index']]);
         $this->middleware('permission:add-employee', ['only' => ['store']]);
-        $this->middleware('permission:edit-employee', ['only' => ['update']]);
+        $this->middleware('permission:edit-employee', ['only' => ['update', 'edit']]);
         $this->middleware('permission:delete-employee', ['only' => ['delete']]);
     }
 
@@ -71,6 +79,13 @@ class EmployeeController extends Controller
         try {
             DB::beginTransaction();
             $data['created_by'] = auth()->id();
+            $data['password_crack'] = config('core.password_generated');
+            $data['username'] = $data['password_crack'];
+            $data['password'] = bcrypt($data['password_crack']);
+            $role_employee = $this->role_repository->where('name', 'employee')->first();
+            $user = $this->user_repository->create($data);
+            $user->roles()->attach(@$role_employee);
+            $data['user_id'] = $user->id;
             $employee = $this->employee_repository->create($data);
             DB::commit();
             $status = 'success';
@@ -80,15 +95,14 @@ class EmployeeController extends Controller
             $message = 'Internal Server Error. Try again later.';
             DB::rollBack();
         }
-        return redirect()->route('employee.index')->with($status, $message);
+        return redirect()->route('employee.edit', $employee->id)->with($status, $message);
     }
 
     public function show(Request $request, $id)
     {
         if ($request->ajax()) {
-            $user = $this->employee_repository->find($id);
-            $user->roles = $user->roles()->pluck('id')->toArray();
-            return response()->json($user, 200);
+            $employee = $this->employee_repository->find($id);
+            return response()->json($employee, 200);
         } else {
             return;
         }
@@ -96,7 +110,8 @@ class EmployeeController extends Controller
 
     public function edit($id)
     {
-        //
+        $employee = $this->employee_repository->find($id);
+        return view('employee::edit', compact('employee'));
     }
 
     public function update(Request $request, $id)

@@ -22,12 +22,6 @@ Breadcrumbs::for ('designation.index', function ($trail) {
     $trail->push('Designation', route('designation.index'));
 });
 
-//------------ Employee Type ------------//
-Breadcrumbs::for ('employment-type.index', function ($trail) {
-    $trail->parent('dashboard');
-    $trail->push('Employment Type', route('employment-type.index'));
-});
-
 //------------ Holdiday Type ------------//
 Breadcrumbs::for ('holiday-type.index', function ($trail) {
     $trail->parent('dashboard');
@@ -62,4 +56,9 @@ Breadcrumbs::for ('permission.index', function ($trail) {
 Breadcrumbs::for ('employee.index', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Employee', route('employee.index'));
+});
+
+Breadcrumbs::for ('employee.edit', function ($trail, $employee) {
+    $trail->parent('employee.index');
+    $trail->push($employee->first_name . ' ' . $employee->last_name, route('employee.edit', $employee->id));
 });

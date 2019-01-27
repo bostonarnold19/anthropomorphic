@@ -30,16 +30,13 @@
         </div>
     </div>
 </div>
-@include('employee::includes._modal_edit')
 @include('employee::includes._modal_add')
 @endsection
 @section('styles')
-<link rel="stylesheet" href="{{ asset('themes/dashmix/assets/js/plugins/select2/css/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('themes/dashmix/assets/js/plugins/datatables/dataTables.bootstrap4.css') }}">
 <link rel="stylesheet" href="{{ asset('themes/dashmix/assets/js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css') }}">
 @endsection
 @section('scripts')
-<script src="{{ asset('themes/dashmix/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('themes/dashmix/assets/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('themes/dashmix/assets/js/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
 <script>
@@ -69,27 +66,6 @@
             [5, 10, 20]
         ],
         autoWidth: !1,
-    });
-    $(document).on('click', '[id=btn-edit]', function(){
-        var id = $(this).data('id');
-        var show_route = '{{ route('employee.show', ':id') }}';
-        var update_route = '{{ route('employee.update', ':id') }}';
-        show_route = show_route.replace(':id', id);
-        update_route = update_route.replace(':id', id);
-        if (id) {
-            $.ajax({
-                method: 'get',
-                url: show_route,
-                jsonp: false,
-                success: function(result) {
-                    $('[id=id]').val(result.id);
-                    $('[id=first_name]').val(result.first_name);
-                    $('[id=last_name]').val(result.last_name);
-                    $("[id=update-form]").attr("action", update_route);
-                    $('[id=edit-modal]').modal();
-                }
-            });
-        }
     });
 </script>
 @endsection

@@ -26,6 +26,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row push">
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">

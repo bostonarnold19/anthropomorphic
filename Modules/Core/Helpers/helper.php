@@ -22,12 +22,12 @@ function getAllDepartment()
     return $data;
 }
 
-function getAllSection()
+function getAllDesignation()
 {
     $data = [];
-    $sections = GlobalSetting::where('key', 'section')->get();
-    foreach ($sections as $section) {
-        $data[$section->id] = json_decode($section->value)->name;
+    $designations = GlobalSetting::where('key', 'designation')->get();
+    foreach ($designations as $designation) {
+        $data[$designation->id] = json_decode($designation->value)->name;
     }
     return $data;
 }

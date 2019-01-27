@@ -36,7 +36,7 @@ class ScheduleController extends Controller
                     return json_decode($schedule->value)->time_out;
                 })
                 ->addColumn('days', function ($schedule) {
-                    return config('hr_settings.schedule_days.' . @json_decode($schedule->value)->days);
+                    return config('hr_settings.schedule_days.' . @json_decode($schedule->value)->days)['name'];
                 })
                 ->addColumn('action', function ($schedule) {
                     return view('schedule::includes._index_action', compact('schedule'))->render();
