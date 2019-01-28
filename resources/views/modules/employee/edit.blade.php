@@ -27,12 +27,10 @@
                         @include('employee::includes._form_personal_information')
                     </div>
                     <div class="tab-pane" id="tab-employment-details" role="tabpanel">
-                        <h4 class="font-w400">Employment Details</h4>
-                        <p>...</p>
+                        @include('employee::includes._form_employment_details')
                     </div>
                     <div class="tab-pane" id="tab-documents" role="tabpanel">
-                        <h4 class="font-w400">Documents</h4>
-                        <p>...</p>
+                        @include('employee::includes._form_documents')
                     </div>
                     <div class="tab-pane" id="tab-schedules" role="tabpanel">
                         <h4 class="font-w400">Schedules</h4>
@@ -44,7 +42,7 @@
         <div class="col-xl-4">
             <div class="block block-rounded block-bordered">
                 <div class="block-content block-content-full">
-                    <div class="row push">
+                    <div class="row">
                         <div class="col-xl-12">
                             <div class="form-group">
                                 <img class="mx-auto d-block img-thumbnai img-fluid mb-4" src="{{ asset($employee->profile_picture) }}" alt="">
@@ -71,6 +69,38 @@
         format: 'yyyy-mm-dd',
         autoclose: true,
         todayHighlight: true,
+    });
+    $('#is_hired').change(function() {
+        var val = $(this).val();
+        if(val == 0) {
+            $('#date_hired').attr('disabled', true);
+            $('#date_hired').val('');
+        } else {
+            $('#date_hired').removeAttr('disabled');
+        }
+    });
+    $('#is_regular').change(function() {
+        var val = $(this).val();
+        if(val == 0) {
+            $('#date_regular').attr('disabled', true);
+            $('#date_regular').val('');
+        } else {
+            $('#date_regular').removeAttr('disabled');
+        }
+    });
+    $('#is_retirement').change(function() {
+        var val = $(this).val();
+        if(val == 0) {
+            $('#date_retirement').attr('disabled', true);
+            $('#date_retirement').val('');
+        } else {
+            $('#date_retirement').removeAttr('disabled');
+        }
+    });
+    $('#employment-details-form').submit(function() {
+        $("#date_hired").prop('disabled', false);
+        $("#date_regular").prop('disabled', false);
+        $("#date_retirement").prop('disabled', false);
     });
 </script>
 @endsection

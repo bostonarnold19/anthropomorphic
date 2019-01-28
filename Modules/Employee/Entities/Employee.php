@@ -25,11 +25,9 @@ class Employee extends Model
         'mobile',
         'telephone',
         'marital_status',
-        'salary',
         'date_hired',
         'date_regular',
         'date_retirement',
-        'schedule',
         'educational_level',
         'created_by',
     ];

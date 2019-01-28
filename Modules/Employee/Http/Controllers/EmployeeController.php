@@ -50,13 +50,16 @@ class EmployeeController extends Controller
                     return $employee->first_name . ' ' . $employee->last_name;
                 })
                 ->addColumn('branch', function ($employee) {
-                    return $this->employee_service->getBranch($employee->id);
+                    return getBranch($employee->id);
                 })
                 ->addColumn('designation', function ($employee) {
-                    return $this->employee_service->getDesignation($employee->id);
+                    return getDesignation($employee->id);
                 })
                 ->addColumn('department', function ($employee) {
-                    return $this->employee_service->getDepartment($employee->id);
+                    return getDepartment($employee->id);
+                })
+                ->addColumn('salary', function ($employee) {
+                    return getSalary($employee->id);
                 })
                 ->addColumn('action', function ($employee) {
                     return view('employee::includes._index_action', compact('employee'))->render();
@@ -121,6 +124,7 @@ class EmployeeController extends Controller
             DB::beginTransaction();
             $employee = $this->employee_repository->findOrFail($id);
             $employee->update($data);
+            $this->employee_service->saveAllEmployeeSettings($data, $employee->id);
             DB::commit();
             $status = 'success';
             $message = 'Employee has been updated.';

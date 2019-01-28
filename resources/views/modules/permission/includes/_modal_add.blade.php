@@ -10,7 +10,7 @@
             <div class="modal-body pb-1">
                 <form id="save-form" method="POST" action="{{ route('permission.store') }}">
                     @csrf
-                    <div class="row push">
+                    <div class="row">
                         <div class="col-xl-12">
                             <div class="form-group">
                                 <label>Name</label>

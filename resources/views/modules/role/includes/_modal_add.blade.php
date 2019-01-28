@@ -10,7 +10,7 @@
             <div class="modal-body pb-1">
                 <form id="save-form" method="POST" action="{{ route('role.store') }}">
                     @csrf
-                    <div class="row push">
+                    <div class="row">
                         <div class="col-xl-12">
                             <div class="form-group">
                                 <label>Name</label>
@@ -18,14 +18,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row push">
+                    <div class="row">
                         <div class="col-xl-12">
                             <label>Permissions</label>
                         </div>
                         @foreach($permissions->chunk(3) as $chunk_permissions)
                         <div class="col-xl-4">
                             @foreach($chunk_permissions as $key => $value)
-                            <div class="custom-control custom-checkbox custom-control-primary mb-1">
+                            <div class="custom-control custom-checkbox custom-control-primary mb-2">
                                 <input type="checkbox" class="custom-control-input" id="add-perm-{{ $value->id }}" name="permissions[]" value="{{ $value->id }}">
                                 <label class="custom-control-label" for="add-perm-{{ $value->id }}">{{ $value->name }}</label>
                             </div>

@@ -19,6 +19,7 @@
                         <th>Name</th>
                         <th>Birthdate</th>
                         <th>Gender</th>
+                        <th>Salary</th>
                         <th>Branch</th>
                         <th>Department</th>
                         <th>Designation</th>
@@ -49,6 +50,7 @@
             {data: 'name'},
             {data: 'birthdate'},
             {data: 'gender'},
+            {data: 'salary'},
             {data: 'branch'},
             {data: 'department'},
             {data: 'designation'},

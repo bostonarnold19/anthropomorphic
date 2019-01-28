@@ -11,7 +11,7 @@
                 <form id="update-form" method="POST" action="">
                     @csrf
                     @method('patch')
-                    <div class="row push">
+                    <div class="row">
                         <div class="col-xl-12">
                             <div class="form-group">
                                 <label for="first_name">First Name</label>
@@ -19,7 +19,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row push">
+                    <div class="row">
                         <div class="col-xl-12">
                             <div class="form-group">
                                 <label for="last_name">Last Name</label>
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row push">
+                    <div class="row">
                         <div class="col-xl-12">
                             <div class="form-group">
                                 <label for="email">Email</label>
@@ -35,7 +35,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row push">
+                    <div class="row">
                         <div class="col-xl-12">
                             <div class="form-group">
                                 <label for="roles">Roles</label>

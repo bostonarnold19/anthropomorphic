@@ -18,36 +18,29 @@ class EmployeeService
         $this->global_setting_repository = $global_setting_repository->model;
     }
 
-    public function getDesignation($id)
+    public function saveAllEmployeeSettings($data, $employee_id)
     {
-        $employee_designation = $this->employee_setting_repository
-            ->where('employee_id', $id)
-            ->where('key', 'designation')
-            ->latest('created_at')
-            ->first();
-        $designation = $this->global_setting_repository->find(@$employee_designation->id);
-        return @json_decode($designation->value)->name;
+        $fields = [
+            'salary' => @$data['salary'],
+            'branch' => @$data['branch'],
+            'department' => @$data['department'],
+            'designation' => @$data['designation'],
+            'document' => @$data['document'],
+        ];
+        foreach ($fields as $key => $value) {
+            $this->saveEmployeeSettings($key, $value, $employee_id);
+        }
     }
 
-    public function getDepartment($id)
+    public function saveEmployeeSettings($key, $value, $employee_id)
     {
-        $employee_department = $this->employee_setting_repository
-            ->where('employee_id', $id)
-            ->where('key', 'department')
-            ->latest('created_at')
-            ->first();
-        $department = $this->global_setting_repository->find(@$employee_department->id);
-        return @json_decode($department->value)->name;
-    }
-
-    public function getBranch($id)
-    {
-        $employee_branch = $this->employee_setting_repository
-            ->where('employee_id', $id)
-            ->where('key', 'branch')
-            ->latest('created_at')
-            ->first();
-        $branch = $this->global_setting_repository->find(@$employee_branch->id);
-        return @json_decode($branch->value)->name;
+        if (isset($value) && !empty($value)) {
+            $data = [
+                'employee_id' => $employee_id,
+                'key' => $key,
+                'value' => json_encode($value),
+            ];
+            return $employee_setting = $this->employee_setting_repository->firstOrCreate($data);
+        }
     }
 }

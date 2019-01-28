@@ -1,5 +1,6 @@
 <?php
 
+use Modules\Employee\Entities\EmployeeSetting;
 use Modules\GlobalSetting\Entities\GlobalSetting;
 
 function getAllBranch()
@@ -30,4 +31,60 @@ function getAllDesignation()
         $data[$designation->id] = json_decode($designation->value)->name;
     }
     return $data;
+}
+
+function getDesignation($id)
+{
+    $employee_designation = EmployeeSetting::where('employee_id', $id)
+        ->where('key', 'designation')
+        ->latest('created_at')
+        ->first();
+    $designation = GlobalSetting::find(@json_decode($employee_designation->value));
+    return @json_decode($designation->value)->name;
+}
+
+function getDepartment($id)
+{
+    $employee_department = EmployeeSetting::where('employee_id', $id)
+        ->where('key', 'department')
+        ->latest('created_at')
+        ->first();
+    $department = GlobalSetting::find(@json_decode($employee_department->value));
+    return @json_decode($department->value)->name;
+}
+
+function getBranch($id)
+{
+    $employee_branch = EmployeeSetting::where('employee_id', $id)
+        ->where('key', 'branch')
+        ->latest('created_at')
+        ->first();
+    $branch = GlobalSetting::find(@json_decode($employee_branch->value));
+    return @json_decode($branch->value)->name;
+}
+
+function getSalary($id)
+{
+    $employee_salary = EmployeeSetting::where('employee_id', $id)
+        ->where('key', 'salary')
+        ->latest('created_at')
+        ->first();
+    return @json_decode($employee_salary->value);
+}
+
+function getDocuments($id)
+{
+    $documents = [];
+    $employee_documents = EmployeeSetting::where('employee_id', $id)
+        ->where('key', 'document')
+        ->get();
+    foreach ($employee_documents as $key => $value) {
+        $document = @json_decode($value->value);
+        $documents[] = [
+            'name' => $document->name,
+            'file' => $document->file,
+            'date' => $value->created_at->format('Y-m-d'),
+        ];
+    }
+    return $documents;
 }

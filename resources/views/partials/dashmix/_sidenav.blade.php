@@ -34,7 +34,7 @@
         <li class="nav-main-heading">Manage</li>
         @permission('manage-user')
         <li class="nav-main-item">
-            <a class="nav-main-link {{ Request::is('user') ? 'active' : '' }}" href="{{ route('user.index') }}">
+            <a class="nav-main-link {{ Request::is('user/*') ? 'active' : '' }}" href="{{ route('user.index') }}">
                 <i class="nav-main-link-icon far fa-dot-circle"></i>
                 <span class="nav-main-link-name">User</span>
             </a>
@@ -42,7 +42,7 @@
         @endpermission
         @permission('manage-role')
         <li class="nav-main-item">
-            <a class="nav-main-link {{ Request::is('role') ? 'active' : '' }}" href="{{ route('role.index') }}">
+            <a class="nav-main-link {{ Request::is('role/*') ? 'active' : '' }}" href="{{ route('role.index') }}">
                 <i class="nav-main-link-icon far fa-dot-circle"></i>
                 <span class="nav-main-link-name">Role</span>
             </a>
@@ -50,7 +50,7 @@
         @endpermission
         @permission('manage-permission')
         <li class="nav-main-item">
-            <a class="nav-main-link {{ Request::is('permission') ? 'active' : '' }}" href="{{ route('permission.index') }}">
+            <a class="nav-main-link {{ Request::is('permission/*') ? 'active' : '' }}" href="{{ route('permission.index') }}">
                 <i class="nav-main-link-icon far fa-dot-circle"></i>
                 <span class="nav-main-link-name">Permission</span>
             </a>
@@ -58,7 +58,7 @@
         @endpermission
         @permission('manage-employee')
         <li class="nav-main-item">
-            <a class="nav-main-link {{ Request::is('employee') ? 'active' : '' }}" href="{{ route('employee.index') }}">
+            <a class="nav-main-link {{ Request::is('employee/*') ? 'active' : '' }}" href="{{ route('employee.index') }}">
                 <i class="nav-main-link-icon far fa-dot-circle"></i>
                 <span class="nav-main-link-name">Employee</span>
             </a>
@@ -67,7 +67,7 @@
         <li class="nav-main-heading">Company Setting</li>
         @permission('manage-schedule')
         <li class="nav-main-item">
-            <a class="nav-main-link {{ Request::is('schedule') ? 'active' : '' }}" href="{{ route('schedule.index') }}">
+            <a class="nav-main-link {{ Request::is('schedule/*') ? 'active' : '' }}" href="{{ route('schedule.index') }}">
                 <i class="nav-main-link-icon far fa-dot-circle"></i>
                 <span class="nav-main-link-name">Schedule</span>
             </a>
@@ -75,7 +75,7 @@
         @endpermission
         @permission('manage-branch')
         <li class="nav-main-item">
-            <a class="nav-main-link {{ Request::is('branch') ? 'active' : '' }}" href="{{ route('branch.index') }}">
+            <a class="nav-main-link {{ Request::is('branch/*') ? 'active' : '' }}" href="{{ route('branch.index') }}">
                 <i class="nav-main-link-icon far fa-dot-circle"></i>
                 <span class="nav-main-link-name">Branch</span>
             </a>
@@ -83,7 +83,7 @@
         @endpermission
         @permission('manage-department')
         <li class="nav-main-item">
-            <a class="nav-main-link {{ Request::is('department') ? 'active' : '' }}" href="{{ route('department.index') }}">
+            <a class="nav-main-link {{ Request::is('department/*') ? 'active' : '' }}" href="{{ route('department.index') }}">
                 <i class="nav-main-link-icon far fa-dot-circle"></i>
                 <span class="nav-main-link-name">Department</span>
             </a>
@@ -91,7 +91,7 @@
         @endpermission
         @permission('manage-designation')
         <li class="nav-main-item">
-            <a class="nav-main-link {{ Request::is('designation') ? 'active' : '' }}" href="{{ route('designation.index') }}">
+            <a class="nav-main-link {{ Request::is('designation/*') ? 'active' : '' }}" href="{{ route('designation.index') }}">
                 <i class="nav-main-link-icon far fa-dot-circle"></i>
                 <span class="nav-main-link-name">Designation</span>
             </a>

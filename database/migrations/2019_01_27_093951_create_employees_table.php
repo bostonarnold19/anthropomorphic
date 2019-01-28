@@ -29,11 +29,9 @@ class CreateEmployeesTable extends Migration
             $table->string('mobile')->nullable();
             $table->string('telephone')->nullable();
             $table->string('marital_status')->nullable();
-            $table->string('salary')->nullable();
             $table->date('date_hired')->nullable();
             $table->date('date_regular')->nullable();
             $table->date('date_retirement')->nullable();
-            $table->json('schedule')->nullable();
             $table->string('educational_level')->nullable();
             $table->string('created_by')->nullable();
             $table->softDeletes();

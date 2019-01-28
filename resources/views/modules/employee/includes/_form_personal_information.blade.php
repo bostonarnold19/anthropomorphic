@@ -1,7 +1,7 @@
-<form method="POST" action="{{ route('employee.update', $employee->id) }}">
+<form id="personal-information-form" method="POST" action="{{ route('employee.update', $employee->id) }}">
     @csrf
     @method('patch')
-    <div class="row push">
+    <div class="row">
         <div class="col-xl-4">
             <div class="form-group">
                 <label for="first_name">First Name</label>
@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-    <div class="row push">
+    <div class="row">
         <div class="col-xl-12">
             <div class="form-group">
                 <label for="address">Address</label>
@@ -29,7 +29,7 @@
             </div>
         </div>
     </div>
-    <div class="row push">
+    <div class="row">
         <div class="col-xl-6">
             <div class="form-group">
                 <label class="d-block">Gender</label>
@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-    <div class="row push">
+    <div class="row">
         <div class="col-xl-6">
             <div class="form-group">
                 <label for="first_name">Mobile Number</label>
@@ -64,7 +64,7 @@
             </div>
         </div>
     </div>
-    <div class="row push">
+    <div class="row">
         <div class="col-xl-6">
             <div class="form-group">
                 <label for="marital_status">Marital Status</label>
