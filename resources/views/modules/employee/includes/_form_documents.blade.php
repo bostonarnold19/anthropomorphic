@@ -1,4 +1,4 @@
-<div class="row shadow p-3 mb-5 bg-white rounded">
+<div class="row push">
     <div class="col-xl-12">
         <form id="documents-form" method="POST" action="{{ route('employee.update', $employee->id) }}" enctype="multipart/form-data">
             @csrf

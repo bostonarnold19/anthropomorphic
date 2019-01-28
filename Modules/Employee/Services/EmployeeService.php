@@ -35,6 +35,9 @@ class EmployeeService
     public function saveEmployeeSettings($key, $value, $employee_id)
     {
         if (isset($value) && !empty($value)) {
+            if ($key == 'document') {
+                $value['file'] = $value['file']->store('201');
+            }
             $data = [
                 'employee_id' => $employee_id,
                 'key' => $key,
