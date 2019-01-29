@@ -32,10 +32,10 @@ class EmployeeController extends Controller
         $this->employee_service = $employee_service;
         $this->user_repository = $user_repository->model;
         $this->role_repository = $role_repository->model;
-        $this->middleware('permission:manage-employee', ['only' => ['index']]);
+        $this->middleware('permission:manage-employee', ['only' => ['index', 'show']]);
         $this->middleware('permission:add-employee', ['only' => ['store']]);
         $this->middleware('permission:edit-employee', ['only' => ['update', 'edit']]);
-        $this->middleware('permission:delete-employee', ['only' => ['delete']]);
+        $this->middleware('permission:delete-employee', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)

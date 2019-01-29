@@ -69,7 +69,7 @@
         <div class="col-xl-6">
             <div class="form-group">
                 <label for="date_hired">Date Hired</label>
-                <input type="text" class="js-datepicker form-control" id="date_hired" {{ empty($employee->date_hired) ? 'disabled' : '' }} name="date_hired" value="{{ $employee->date_hired }}" placeholder="Date Hired" required>
+                <input type="text" autocomplete="off" class="js-datepicker form-control" id="date_hired" {{ empty($employee->date_hired) ? 'disabled' : '' }} name="date_hired" value="{{ $employee->date_hired }}" placeholder="Date Hired" required>
             </div>
         </div>
     </div>
@@ -86,7 +86,7 @@
         <div class="col-xl-6">
             <div class="form-group">
                 <label for="date_regular">Date Regular</label>
-                <input type="text" class="js-datepicker form-control" id="date_regular" {{ empty($employee->date_regular) ? 'disabled' : '' }} name="date_regular" value="{{ $employee->date_regular }}" placeholder="Date Hired" required>
+                <input type="text" autocomplete="off" class="js-datepicker form-control" id="date_regular" {{ empty($employee->date_regular) ? 'disabled' : '' }} name="date_regular" value="{{ $employee->date_regular }}" placeholder="Date Hired" required>
             </div>
         </div>
     </div>
@@ -103,7 +103,7 @@
         <div class="col-xl-6">
             <div class="form-group">
                 <label for="date_retirement">Date Retirement</label>
-                <input type="text" class="js-datepicker form-control" id="date_retirement" {{ empty($employee->date_retirement) ? 'disabled' : '' }} name="date_retirement" value="{{ $employee->date_retirement }}" placeholder="Date Hired" required>
+                <input type="text" autocomplete="off" class="js-datepicker form-control" id="date_retirement" {{ empty($employee->date_retirement) ? 'disabled' : '' }} name="date_retirement" value="{{ $employee->date_retirement }}" placeholder="Date Hired" required>
             </div>
         </div>
     </div>

@@ -33,8 +33,7 @@
                         @include('employee::includes._form_documents')
                     </div>
                     <div class="tab-pane" id="tab-schedules" role="tabpanel">
-                        <h4 class="font-w400">Schedules</h4>
-                        <p>...</p>
+                        @include('employee::includes._form_schedules')
                     </div>
                 </div>
             </div>
@@ -60,9 +59,12 @@
 </div>
 @endsection
 @section('styles')
+<link rel="stylesheet" href="{{ asset('css/plugins/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('themes/dashmix/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
 @endsection
 @section('scripts')
+<script src="{{ asset('themes/dashmix/assets/js/plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('js/plugins/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.js') }}"></script>
 <script src="{{ asset('themes/dashmix/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 <script>
     $('.js-datepicker').datepicker({
@@ -101,6 +103,52 @@
         $("#date_hired").prop('disabled', false);
         $("#date_regular").prop('disabled', false);
         $("#date_retirement").prop('disabled', false);
+    });
+    $('#document_file').change(function(e){
+        var fileName = e.target.files[0].name;
+        if (e.target.nextElementSibling != null){
+            e.target.nextElementSibling.innerText = fileName;
+        }
+    });
+    $(function () {
+        $('.time-picker').datetimepicker({
+            format: 'LT',
+        });
+        $("#schedule-selector").change();
+    });
+    $(document).on('change', '[id=schedule-selector]', function(){
+        var schedule = $(this).val();
+        var data = JSON.parse($(this).find('option:selected').attr('data-value'));
+        if(schedule == 'custom_schedule') {
+            var days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+            $('#schedule-selector').removeAttr('name');
+            $.each(days, function( key, value ) {
+                $('[name="schedule['+value+'][time_in]"]').val(data ? data[value].time_in : '').prop('disabled', false);
+                $('[name="schedule['+value+'][time_out]"]').val(data ? data[value].time_out : '').prop('disabled', false);
+            });
+        } else {
+            $('#schedule-selector').attr('name', 'schedule');
+            var days = [];
+            switch(data.days) {
+                case "0":
+                    days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+                    break;
+                case "2":
+                    days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+                    break;
+                case "3":
+                    days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+                    break;
+                default:
+            }
+            $('.datetimepicker-input').each(function() {
+                $(this).val('').prop('disabled', true);;
+            });
+            $.each(days, function( key, value ) {
+                $('[name="schedule['+value+'][time_in]"]').val(data.time_in).prop('disabled', true);
+                $('[name="schedule['+value+'][time_out]"]').val(data.time_out).prop('disabled', true);
+            });
+        }
     });
 </script>
 @endsection

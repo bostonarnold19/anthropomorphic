@@ -15,10 +15,10 @@ class DesignationController extends Controller
     public function __construct(GlobalSettingRepositoryInterface $global_setting_repository)
     {
         $this->global_setting_repository = $global_setting_repository->model;
-        $this->middleware('permission:manage-designation', ['only' => ['index']]);
+        $this->middleware('permission:manage-designation', ['only' => ['index', 'show']]);
         $this->middleware('permission:add-designation', ['only' => ['store']]);
         $this->middleware('permission:edit-designation', ['only' => ['update']]);
-        $this->middleware('permission:delete-designation', ['only' => ['delete']]);
+        $this->middleware('permission:delete-designation', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)

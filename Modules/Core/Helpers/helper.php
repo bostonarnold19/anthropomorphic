@@ -43,6 +43,16 @@ function getDesignation($id)
     return @json_decode($designation->value)->name;
 }
 
+function getAllSchedule()
+{
+    $data = [];
+    $schedules = GlobalSetting::where('key', 'schedule')->get();
+    foreach ($schedules as $schedule) {
+        $data[$schedule->id] = @json_decode($schedule->value);
+    }
+    return $data;
+}
+
 function getDepartment($id)
 {
     $employee_department = EmployeeSetting::where('employee_id', $id)
@@ -63,6 +73,30 @@ function getBranch($id)
     return @json_decode($branch->value)->name;
 }
 
+function getSchedule($id)
+{
+    $employee_schedule = EmployeeSetting::where('employee_id', $id)
+        ->where('key', 'schedule')
+        ->latest('created_at')
+        ->first();
+    if (isset($employee_schedule)) {
+        if (is_object(@json_decode($employee_schedule->value))) {
+            return [
+                'key' => 'custom_schedule',
+                'value' => @json_decode($employee_schedule->value),
+            ];
+        } else {
+            $schedule = GlobalSetting::find(@json_decode($employee_schedule->value));
+            return [
+                'key' => @$schedule->id,
+                'value' => @json_decode($schedule->value),
+            ];
+        }
+    } else {
+        return null;
+    }
+}
+
 function getSalary($id)
 {
     $employee_salary = EmployeeSetting::where('employee_id', $id)
@@ -71,16 +105,17 @@ function getSalary($id)
         ->first();
     return @json_decode($employee_salary->value);
 }
-
 function getDocuments($id)
 {
     $documents = [];
     $employee_documents = EmployeeSetting::where('employee_id', $id)
         ->where('key', 'document')
+        ->orderBy('created_at', 'desc')
         ->get();
     foreach ($employee_documents as $key => $value) {
         $document = @json_decode($value->value);
         $documents[] = [
+            'id' => $value->id,
             'name' => $document->name,
             'file' => $document->file,
             'date' => $value->created_at->format('Y-m-d'),

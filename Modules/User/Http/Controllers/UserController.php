@@ -18,10 +18,10 @@ class UserController extends Controller
     {
         $this->user_repository = $user_repository->model;
         $this->role_repository = $role_repository->model;
-        $this->middleware('permission:manage-user', ['only' => ['index']]);
+        $this->middleware('permission:manage-user', ['only' => ['index', 'show']]);
         $this->middleware('permission:add-user', ['only' => ['store']]);
         $this->middleware('permission:edit-user', ['only' => ['update']]);
-        $this->middleware('permission:delete-user', ['only' => ['delete']]);
+        $this->middleware('permission:delete-user', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)

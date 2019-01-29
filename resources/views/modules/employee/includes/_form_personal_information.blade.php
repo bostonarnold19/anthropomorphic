@@ -46,7 +46,7 @@
         <div class="col-xl-6">
             <div class="form-group">
                 <label for="birthdate">Birthdate</label>
-                <input type="text" class="js-datepicker form-control" id="birthdate" name="birthdate" value="{{ $employee->birthdate }}" placeholder="Birthdate" required>
+                <input type="text" autocomplete="off" class="js-datepicker form-control" id="birthdate" name="birthdate" value="{{ $employee->birthdate }}" placeholder="Birthdate" required>
             </div>
         </div>
     </div>

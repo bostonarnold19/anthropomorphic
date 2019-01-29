@@ -15,10 +15,10 @@ class ScheduleController extends Controller
     public function __construct(GlobalSettingRepositoryInterface $global_setting_repository)
     {
         $this->global_setting_repository = $global_setting_repository->model;
-        $this->middleware('permission:manage-schedule', ['only' => ['index']]);
+        $this->middleware('permission:manage-schedule', ['only' => ['index', 'show']]);
         $this->middleware('permission:add-schedule', ['only' => ['store']]);
         $this->middleware('permission:edit-schedule', ['only' => ['update']]);
-        $this->middleware('permission:delete-schedule', ['only' => ['delete']]);
+        $this->middleware('permission:delete-schedule', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)

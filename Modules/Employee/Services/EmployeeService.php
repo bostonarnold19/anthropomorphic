@@ -26,6 +26,7 @@ class EmployeeService
             'department' => @$data['department'],
             'designation' => @$data['designation'],
             'document' => @$data['document'],
+            'schedule' => @$data['schedule'],
         ];
         foreach ($fields as $key => $value) {
             $this->saveEmployeeSettings($key, $value, $employee_id);

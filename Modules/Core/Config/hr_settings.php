@@ -1,12 +1,14 @@
 <?php
 
 return [
+    'days' => ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
+
     'schedule_days' => [
         0 => [
             'days' => '261',
             'name' => 'Monday to Friday',
         ],
-        1 => [
+        2 => [
             'days' => '313',
             'name' => 'Monday to Saturday',
         ],

@@ -49,4 +49,8 @@ return [
     ['name' => 'add-employee'],
     ['name' => 'edit-employee'],
     ['name' => 'delete-employee'],
+
+    //document
+    ['name' => 'download-document'],
+    ['name' => 'delete-document'],
 ];

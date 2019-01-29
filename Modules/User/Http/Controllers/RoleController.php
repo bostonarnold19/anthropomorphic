@@ -18,10 +18,10 @@ class RoleController extends Controller
     {
         $this->role_repository = $role_repository->model;
         $this->permission_repository = $permission_repository->model;
-        $this->middleware('permission:manage-role', ['only' => ['index']]);
+        $this->middleware('permission:manage-role', ['only' => ['index', 'show']]);
         $this->middleware('permission:add-role', ['only' => ['store']]);
         $this->middleware('permission:edit-role', ['only`' => ['update']]);
-        $this->middleware('permission:delete-role', ['only' => ['delete']]);
+        $this->middleware('permission:delete-role', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)

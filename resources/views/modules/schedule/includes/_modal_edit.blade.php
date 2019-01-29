@@ -24,7 +24,7 @@
                             <div class="form-group">
                                 <label for="time_in">Time-In</label>
                                 <div class="input-group date time-picker" id="time_in" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" data-target="#time_in" name="value[time_in]" placeholder="Time-In" required>
+                                    <input type="text" autocomplete="off" class="form-control datetimepicker-input" data-target="#time_in" name="value[time_in]" placeholder="Time-In" required>
                                     <div class="input-group-append" data-target="#time_in" data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="far fa-clock"></i></div>
                                     </div>
@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <label for="time_out">Time-Out</label>
                                 <div class="input-group date time-picker" id="time_out" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" data-target="#time_out" name="value[time_out]" placeholder="Time-Out" required>
+                                    <input type="text" autocomplete="off" class="form-control datetimepicker-input" data-target="#time_out" name="value[time_out]" placeholder="Time-Out" required>
                                     <div class="input-group-append" data-target="#time_out" data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="far fa-clock"></i></div>
                                     </div>

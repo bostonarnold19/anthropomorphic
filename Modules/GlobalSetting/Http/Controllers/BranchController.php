@@ -15,10 +15,10 @@ class BranchController extends Controller
     public function __construct(GlobalSettingRepositoryInterface $global_setting_repository)
     {
         $this->global_setting_repository = $global_setting_repository->model;
-        $this->middleware('permission:manage-branch', ['only' => ['index']]);
+        $this->middleware('permission:manage-branch', ['only' => ['index', 'show']]);
         $this->middleware('permission:add-branch', ['only' => ['store']]);
         $this->middleware('permission:edit-branch', ['only' => ['update']]);
-        $this->middleware('permission:delete-branch', ['only' => ['delete']]);
+        $this->middleware('permission:delete-branch', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)
